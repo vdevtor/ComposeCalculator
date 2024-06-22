@@ -1,6 +1,5 @@
 package com.vitorthemyth.composecalculator.domain
 
-
 /**
  * Uses the following grammar
  * expression :	term | term + term | term − term
@@ -19,8 +18,8 @@ class ExpressionEvaluator(
         val result = evalTerm(expression)
         var remaining = result.remainingExpression
         var sum = result.value
-        while(true) {
-            when(remaining.firstOrNull()) {
+        while (true) {
+            when (remaining.firstOrNull()) {
                 ExpressionPart.Op(Operation.ADD) -> {
                     val term = evalTerm(remaining.drop(1))
                     sum += term.value
@@ -40,8 +39,8 @@ class ExpressionEvaluator(
         val result = evalFactor(expression)
         var remaining = result.remainingExpression
         var sum = result.value
-        while(true) {
-            when(remaining.firstOrNull()) {
+        while (true) {
+            when (remaining.firstOrNull()) {
                 ExpressionPart.Op(Operation.MULTIPLY) -> {
                     val factor = evalFactor(remaining.drop(1))
                     sum *= factor.value
@@ -66,7 +65,7 @@ class ExpressionEvaluator(
     // e.g. 5.0, -7.5, -(3+4*5)
     // But NOT something like 3 * 5, 4 + 5
     private fun evalFactor(expression: List<ExpressionPart>): ExpressionResult {
-        return when(val part = expression.firstOrNull()) {
+        return when (val part = expression.firstOrNull()) {
             ExpressionPart.Op(Operation.ADD) -> {
                 evalFactor(expression.drop(1))
             }
