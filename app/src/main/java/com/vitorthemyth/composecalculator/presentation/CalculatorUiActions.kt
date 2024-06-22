@@ -114,5 +114,5 @@ val calculatorActions = listOf(
         text = "=",
         highlightLevel = HighlightLevel.StronglyHighlighted,
         action = CalculatorAction.Calculate
-    ),
+    )
 )

@@ -4,7 +4,7 @@ class ExpressionWriter {
 
     var expression = ""
     fun processAction(action: CalculatorAction) {
-        when(action) {
+        when (action) {
             CalculatorAction.Calculate -> {
                 val parser = ExpressionParser(prepareForCalculation())
                 val evaluator = ExpressionEvaluator(parser.parser())
@@ -14,7 +14,7 @@ class ExpressionWriter {
                 expression = ""
             }
             CalculatorAction.Decimal -> {
-                if(canEnterDecimal()) {
+                if (canEnterDecimal()) {
                     expression += "."
                 }
             }
@@ -25,7 +25,7 @@ class ExpressionWriter {
                 expression += action.number
             }
             is CalculatorAction.Op -> {
-                if(canEnterOperation(action.operation)) {
+                if (canEnterOperation(action.operation)) {
                     expression += action.operation.symbol
                 }
             }
@@ -39,7 +39,7 @@ class ExpressionWriter {
         val newExpression = expression.takeLastWhile {
             it in "$operationSymbols(."
         }
-        if(newExpression.isEmpty()) {
+        if (newExpression.isEmpty()) {
             return "0"
         }
         return newExpression
@@ -50,15 +50,15 @@ class ExpressionWriter {
         val closingCount = expression.count { it == ')' }
         expression += when {
             expression.isEmpty() ||
-                    expression.last() in "$operationSymbols(" -> "("
+                expression.last() in "$operationSymbols(" -> "("
             expression.last() in "0123456789)" &&
-                    openingCount == closingCount -> return
+                openingCount == closingCount -> return
             else -> ")"
         }
     }
 
     private fun canEnterDecimal(): Boolean {
-        if(expression.isEmpty() || expression.last() in "$operationSymbols.()") {
+        if (expression.isEmpty() || expression.last() in "$operationSymbols.()") {
             return false
         }
         return !expression.takeLastWhile {
@@ -67,7 +67,7 @@ class ExpressionWriter {
     }
 
     private fun canEnterOperation(operation: Operation): Boolean {
-        if(operation in listOf(Operation.ADD, Operation.SUBTRACT)) {
+        if (operation in listOf(Operation.ADD, Operation.SUBTRACT)) {
             return expression.isEmpty() || expression.last() in "$operationSymbols()0123456789"
         }
         return expression.isNotEmpty() || expression.last() in "0123456789)"

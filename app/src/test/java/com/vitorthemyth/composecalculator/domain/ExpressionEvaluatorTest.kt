@@ -3,12 +3,12 @@ package com.vitorthemyth.composecalculator.domain
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
-class ExpressionEvaluatorTest{
+class ExpressionEvaluatorTest {
 
-    private lateinit var evaluator : ExpressionEvaluator
+    private lateinit var evaluator: ExpressionEvaluator
 
     @Test
-    fun `simple expression properly evaluated`(){
+    fun `simple expression properly evaluated`() {
         evaluator = ExpressionEvaluator(
             listOf(
                 ExpressionPart.Number(4.0),
@@ -22,12 +22,12 @@ class ExpressionEvaluatorTest{
                 ExpressionPart.Number(3.0)
             )
         )
-        4+5-3*5/3
+        4 + 5 - 3 * 5 / 3
         assertThat(evaluator.evaluate()).isEqualTo(4)
     }
 
     @Test
-    fun `Expressions with decimals properly evaluated`(){
+    fun `Expressions with decimals properly evaluated`() {
         evaluator = ExpressionEvaluator(
             listOf(
                 ExpressionPart.Number(4.5),

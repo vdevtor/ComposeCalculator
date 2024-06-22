@@ -2,7 +2,7 @@ package com.vitorthemyth.composecalculator.domain
 
 import java.lang.IllegalArgumentException
 
-enum class Operation(val symbol : Char) {
+enum class Operation(val symbol: Char) {
     ADD('+'),
     SUBTRACT('-'),
     MULTIPLY('x'),
@@ -12,7 +12,7 @@ enum class Operation(val symbol : Char) {
 
 val operationSymbols = Operation.entries.map { it.symbol }.joinToString("")
 
-fun operationFromSymbol(symbol: Char) : Operation{
+fun operationFromSymbol(symbol: Char): Operation {
     return Operation.entries.find { it.symbol == symbol }
         ?: throw IllegalArgumentException("Invalid Symbol")
 }
