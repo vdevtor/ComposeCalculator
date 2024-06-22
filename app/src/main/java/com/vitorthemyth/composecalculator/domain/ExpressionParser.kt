@@ -10,7 +10,6 @@ class ExpressionParser(
         val result = mutableListOf<ExpressionPart>()
         var i = 0
 
-
         while (i < calculation.length) {
             val curChar = calculation[i]
             when {

@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jlleitschuh.gradle.ktlint")
+    id("kotlin-kapt")
 }
 
 android {
@@ -47,6 +49,16 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    ktlint {
+        android.set(true) // Enable Android-specific linting rules
+        ignoreFailures.set(false) // Fail the build if KtLint finds any issues
+        disabledRules.set(listOf("final-newline", "no-wildcard-imports", "max-line-length")) // Specify any rules to ignore
+        reporters {
+            reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN) // Output KtLint results in plain text format
+            reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.HTML) // Output KtLint results in HTML format
+        }
+    }
 }
 
 dependencies {
@@ -60,10 +72,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
-
 //    implementation 'com.google.android.material:material:1.6.1'
 //    implementation "androidx.compose.material3:material3:1.0.0-alpha15"
-//    implementation "androidx.compose.material3:material3-window-size-class:1.0.0-alpha15"
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

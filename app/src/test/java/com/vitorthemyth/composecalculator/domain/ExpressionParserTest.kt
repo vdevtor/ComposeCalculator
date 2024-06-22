@@ -26,7 +26,6 @@ class ExpressionParserTest {
         )
 
         assertThat(expected).isEqualTo(actual)
-
     }
 
     @Test
