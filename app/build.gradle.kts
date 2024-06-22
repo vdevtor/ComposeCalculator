@@ -63,7 +63,7 @@ dependencies {
 
 //    implementation 'com.google.android.material:material:1.6.1'
 //    implementation "androidx.compose.material3:material3:1.0.0-alpha15"
-//    implementation "androidx.compose.material3:material3-window-size-class:1.0.0-alpha15"
+    implementation("androidx.compose.material3:material3-window-size-class:1.2.1")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
