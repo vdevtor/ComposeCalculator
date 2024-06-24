@@ -7,10 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.vitorthemyth.composecalculator.domain.CalculatorAction
 import com.vitorthemyth.composecalculator.domain.ExpressionWriter
 
-
 class CalculatorViewModel(
     private val writer: ExpressionWriter = ExpressionWriter()
-): ViewModel() {
+) : ViewModel() {
 
     var expression by mutableStateOf("")
         private set
