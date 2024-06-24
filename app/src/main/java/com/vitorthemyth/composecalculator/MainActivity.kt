@@ -9,7 +9,7 @@ import com.vitorthemyth.composecalculator.ui.theme.MaterialCalculatorTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Constants.BASE_URL
+
         setContent {
             MaterialCalculatorTheme {
                 CalculatorScreen()
